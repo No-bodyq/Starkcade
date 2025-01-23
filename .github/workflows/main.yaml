@@ -24,6 +24,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
+      - name: Enable Corepack
+        run: corepack enable
         
       - name: Setup node env
         uses: actions/setup-node@v3
@@ -53,4 +55,4 @@ jobs:
         run: yarn next:build
 
       - name: Run Next.js Tests
-        run: yarn next:test
+        run: yarn test:nextjs
