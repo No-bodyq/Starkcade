@@ -47,6 +47,7 @@ jobs:
       - name: Check Code Format
         run: |
             yarn config set nodeLinker node-modules
+            yarn install
             yarn format:check
 
       - name: Run Next.js lint
