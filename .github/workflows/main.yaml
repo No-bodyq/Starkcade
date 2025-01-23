@@ -45,11 +45,10 @@ jobs:
         with:
           scarb-lock: ./packages/snfoundry/contracts/Scarb.lock
 
-      - name: Run Prettier to fix formatting
-        run: yarn prettier --write .
-
       - name: Check Code Format
-        run: yarn format:check
+        run: |
+          yarn prettier --write .
+          yarn format:check
 
       - name: Run Next.js lint
         run: yarn next:lint --max-warnings=0
