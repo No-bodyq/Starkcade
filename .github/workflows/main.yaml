@@ -24,6 +24,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
+      - name: Install Yarn 3.2.3
+        run: npm install -g yarn@3.2.3
+
       - name: Setup node env
         uses: actions/setup-node@v3
         with:
