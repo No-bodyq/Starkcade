@@ -37,5 +37,12 @@
     "pinst": "^3.0.0",
     "prettier": "^3.2.5"
   },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "tabWidth": 2,
+    "useTabs": false
+  },
   "packageManager": "yarn@3.2.3"
 }
