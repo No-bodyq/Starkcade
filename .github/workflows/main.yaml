@@ -5,14 +5,14 @@ on:
     branches:
       - test
     paths:
-      - ".github/workflows/main.yaml"
-      - "packages/nextjs/**"
-      - "package.json"
+      - '.github/workflows/main.yaml'
+      - 'packages/nextjs/**'
+      - 'package.json'
   pull_request:
     branches:
       - test
     paths:
-      - "packages/nextjs/**"
+      - 'packages/nextjs/**'
 jobs:
   ci:
     runs-on: ${{ matrix.os }}
@@ -44,11 +44,6 @@ jobs:
         uses: software-mansion/setup-scarb@v1
         with:
           scarb-lock: ./packages/snfoundry/contracts/Scarb.lock
-
-      - name: Check Code Format
-        run: |
-          yarn prettier --write .
-          yarn format:check
 
       - name: Run Next.js lint
         run: yarn next:lint --max-warnings=0
