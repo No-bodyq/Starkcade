@@ -10,7 +10,6 @@ on:
       - "package.json"
   pull_request:
     branches:
-      - main
       - test
     paths:
       - "packages/nextjs/**"
