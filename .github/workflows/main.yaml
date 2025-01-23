@@ -2,6 +2,8 @@ name: Next.js CI
 
 on:
   push:
+    branches:
+        - test
     paths:
       - ".github/workflows/main.yaml"
       - "packages/nextjs/**"
