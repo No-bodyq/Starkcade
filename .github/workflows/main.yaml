@@ -3,7 +3,7 @@ name: Next.js CI
 on:
   push:
     branches:
-        - test
+      - test
     paths:
       - ".github/workflows/main.yaml"
       - "packages/nextjs/**"
@@ -28,23 +28,25 @@ jobs:
 
       - name: Enable Corepack
         run: corepack enable
-        
+
       - name: Setup node env
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
 
-
       - name: Install dependencies (Next.js)
         run: |
-            yarn config set nodeLinker node-modules
-            yarn install --no-immutable
+          yarn config set nodeLinker node-modules
+          yarn install --no-immutable
         working-directory: ./packages/nextjs
 
       - name: Install scarb
         uses: software-mansion/setup-scarb@v1
         with:
           scarb-lock: ./packages/snfoundry/contracts/Scarb.lock
+
+      - name: Run Prettier to fix formatting
+        run: yarn prettier --write .
 
       - name: Check Code Format
         run: yarn format:check
