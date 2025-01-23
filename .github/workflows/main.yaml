@@ -34,7 +34,7 @@ jobs:
 
 
       - name: Install dependencies (Next.js)
-        run: yarn install --immutable
+        run: yarn install
         working-directory: ./packages/nextjs
 
       - name: Install scarb
