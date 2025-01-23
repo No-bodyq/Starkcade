@@ -34,7 +34,7 @@ jobs:
 
 
       - name: Install dependencies (Next.js)
-        run: yarn install
+        run: yarn install --check-cache
         working-directory: ./packages/nextjs
 
       - name: Install scarb
