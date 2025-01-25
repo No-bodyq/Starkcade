@@ -2,17 +2,15 @@ name: Next.js CI
 
 on:
   push:
-    branches:
-      - test
     paths:
-      - '.github/workflows/main.yaml'
-      - 'packages/nextjs/**'
-      - 'package.json'
+      - ".github/workflows/main.yaml"
+      - "packages/nextjs/**"
+      - "package.json"
   pull_request:
     branches:
-      - test
+      - main
     paths:
-      - 'packages/nextjs/**'
+      - "packages/nextjs/**"
 jobs:
   ci:
     runs-on: ${{ matrix.os }}
@@ -43,6 +41,7 @@ jobs:
       - name: Install scarb
         uses: software-mansion/setup-scarb@v1
         with:
+          scarb-version: "2.8.4"
           scarb-lock: ./packages/snfoundry/contracts/Scarb.lock
 
       - name: Run Next.js lint
