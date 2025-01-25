@@ -45,7 +45,7 @@ jobs:
           scarb-lock: ./packages/snfoundry/contracts/Scarb.lock
 
       - name: Build Next.js project
-        run: yarn next:build
+        run: yarn build
 
       - name: Run Next.js Tests
         run: yarn test:nextjs
