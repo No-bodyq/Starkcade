@@ -11,6 +11,12 @@ on:
       - main
     paths:
       - "packages/nextjs/**"
+
+env:
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
 jobs:
   ci:
     runs-on: ${{ matrix.os }}
@@ -23,6 +29,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@master
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+
 
       - name: Enable Corepack
         run: corepack enable
@@ -38,6 +48,9 @@ jobs:
           yarn install --no-immutable
         working-directory: ./packages/nextjs
 
+      - name: Build Project
+        run: vercel build --token=$VERCEL_TOKEN
+
       - name: Install scarb
         uses: software-mansion/setup-scarb@v1
         with:
@@ -46,3 +59,9 @@ jobs:
 
       - name: Run Next.js Tests
         run: yarn test:nextjs
+
+      - name: Deploy to Vercel
+        env:
+          VERCEL_ORG_ID: $VERCEL_ORG_ID
+          VERCEL_PROJECT_ID: $VERCEL_PROJECT_ID
+        run: vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
