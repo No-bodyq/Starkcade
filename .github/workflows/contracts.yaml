@@ -36,7 +36,7 @@ jobs:
       - name: Build Contracts
         run: |
             cd ./packages/snfoundry/contracts
-            /root/.local/bin/scarb build
+            scarb build
         
       - name: Check Code Format
         run: |
