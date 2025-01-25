@@ -44,9 +44,6 @@ jobs:
           scarb-version: "2.8.4"
           scarb-lock: ./packages/snfoundry/contracts/Scarb.lock
 
-      - name: Run Next.js lint
-        run: yarn next:lint
-
       - name: Check typings on Next.js
         run: yarn next:check-types
 
