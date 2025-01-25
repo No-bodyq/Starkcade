@@ -41,7 +41,7 @@ jobs:
       - name: Build Contracts
         run: |
             cd ./packages/snfoundry/contracts
-            scarb build
+            /root/.local/bin/scarb build
     
       - name: Run Tests
         run: |
